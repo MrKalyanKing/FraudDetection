@@ -17,7 +17,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', router);
 
-const PORT =  8080;
+const PORT = process.env.PORT || 5000;
+if (!process.env.MONGODB_URI) {
+  console.error("❌ MONGODB_URI is not defined in environment variables");
+  process.exit(1); // Prevent container from staying alive if MONGODB_URI is not set
+}
 const MONGO_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGO_URI)

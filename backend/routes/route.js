@@ -12,7 +12,7 @@ const DepositRequest = require('../models/DepositRequest');
 const Transaction = require('../models/TransactionDetails');
 const auth = require('../middleware/auth');
 const adminAuth = require('../middleware/adminAuth');
-const getGeolocation = require('../utils/geolocation');
+const getGeolocation = require('../Utils/geolocation');
 
 
 // User Routes

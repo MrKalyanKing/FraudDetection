@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', router);
 
-const PORT =  8080;
+const PORT = process.env.PORT|| 8080;
 const url=process.env.MONGODB_URI
 
 app.listen(PORT, () => {

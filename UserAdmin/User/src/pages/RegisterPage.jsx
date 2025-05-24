@@ -203,6 +203,13 @@ export default function RegistrationForm() {
               >
                 {loading ? "Registering..." : "Create Account"}
               </button>
+              <button
+                className="w-full py-3 px-4 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200 disabled:bg-indigo-400 disabled:cursor-not-allowed"
+                type="submit"
+                disabled={loading}
+              >
+                Login
+              </button>
               {message && (
                 <div className="text-center text-sm font-medium text-green-600">
                   {message}

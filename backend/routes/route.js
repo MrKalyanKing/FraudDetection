@@ -326,7 +326,7 @@ router.post('/users/buy', auth, async (req, res) => {
         merch_long: transaction.merch_long,
         merch_zipcode: transaction.merch_zipcode,
       });
-       console.log('Prediction Result:', predictionResult);
+       
 
       const { is_fraud, confidence } = predictionResult.data;
       transaction.is_fraud = is_fraud;
@@ -345,17 +345,16 @@ router.post('/users/buy', auth, async (req, res) => {
 
   //  Save transaction
     await transaction.save();
-    console.log('Transaction saved:', transaction._id);
-    console.log("is fruad or not ",transaction.is_fraud)
+   
 
   // Update balance if not fraud
   
 //   console.log('!amtNumber:', amtNumber, 'account.balance before:', account.balance);
   if (transaction.is_fraud === 0 || transaction.is_fraud === "0" || transaction.is_fraud === false) {
-  console.log('2amtNumber:', amtNumber, 'account.balance before:', account.balance);
+  // console.log('2amtNumber:', amtNumber, 'account.balance before:', account.balance);
  account.balance = parseFloat(account.balance) - parseFloat(amtNumber);
   await account.save();
-  console.log('Account balance updated:', account.balance);
+  
 }
 
     res.json({ message: 'Transaction completed', transaction });

@@ -4,10 +4,11 @@ const { GoogleAuth } = require("google-auth-library");
 const axios = require("axios");
 const path = require('path');
 const Account = require("../models/Account");
+const dotenv = require('dotenv');
 //const Transaction = require("../models/Transaction"); // Assuming Mongoose model
 const TransactionDetails = require("../models/TransactionDetails");
 
-
+dotenv.config();
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path.join(__dirname, "../secret/frauddetection.json");
 
 async function getAccessToken() {
@@ -57,10 +58,10 @@ const prediction = async (req, res) => {
            input.merch_long = (input.merch_long ?? '').toString();
 
             const inputData = { instances: [input] };
-            console.log("Input Data:", JSON.stringify(inputData, null, 2));
-            console.log("Input Data:", inputData);
+            // console.log("Input Data:", JSON.stringify(inputData, null, 2));
+            // console.log("Input Data:", inputData);
             const response = await axios.post(
-                `https://us-central1-aiplatform.googleapis.com/v1/projects/498542289749/locations/us-central1/endpoints/${process.env.ENDPOINT_ID}:predict`,
+                `https://us-central1-aiplatform.googleapis.com/v1/projects/498542289749/locations/us-central1/endpoints/${process.env. ENDPOINT_ID}:predict`,
                 inputData,
                 {
                     headers: {
@@ -97,7 +98,7 @@ const prediction = async (req, res) => {
             trans_date_trans_time: new Date(req.body.trans_date_trans_time)
         };
 
-        // const saved = await TransactionDetails.create(transactionToStore);
+        const saved = await TransactionDetails.create(transactionToStore);
 
         res.json({
             is_fraud,

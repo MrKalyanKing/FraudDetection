@@ -95,7 +95,7 @@ export default function LoginPage() {
           {loading ? "Logging in..." : "Login"}
         </button>
        <button style={styles.button} type="submit" disabled={loading}>
-         <Link to="/register">  {loading ? "Registering in..." : "Register"} </Link>
+         <Link to="/register"> Register   </Link>
         </button>
        
 

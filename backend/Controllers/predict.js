@@ -9,7 +9,7 @@ const dotenv = require('dotenv');
 const TransactionDetails = require("../models/TransactionDetails");
 
 dotenv.config();
- process.env.GOOGLE_APPLICATION_CREDENTIALS = '/etc/secrets/frauddetection.json';
+ console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 
 
 async function getAccessToken() {

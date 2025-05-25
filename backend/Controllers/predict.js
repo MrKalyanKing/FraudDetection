@@ -12,7 +12,7 @@ const TransactionDetails = require("../models/TransactionDetails");
 dotenv.config();
 
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS = "frauddetection.json";
+process.env.GOOGLE_APPLICATION_CREDENTIALS = "../secret/frauddetection.json"; // Ensure this path is correct
 
 
 // process.env.GOOGLE_APPLICATION_CREDENTIALS= path.join(__dirname, "../secret/frauddetection.json"); // Ensure this path is correct

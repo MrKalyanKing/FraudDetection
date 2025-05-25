@@ -5,12 +5,17 @@ const axios = require("axios");
 const path = require('path');
 const Account = require("../models/Account");
 const dotenv = require('dotenv');
+
 //const Transaction = require("../models/Transaction"); // Assuming Mongoose model
 const TransactionDetails = require("../models/TransactionDetails");
 
 dotenv.config();
- console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 
+
+process.env.GOOGLE_APPLICATION_CREDENTIALS = "/etc/secrets/frauddetection.json";
+
+
+// process.env.GOOGLE_APPLICATION_CREDENTIALS= path.join(__dirname, "../secret/frauddetection.json"); // Ensure this path is correct
 
 async function getAccessToken() {
     try {

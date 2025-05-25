@@ -4,7 +4,7 @@ import axios from 'axios';
 export const UserDataContext = createContext();
 
 const UserContext = ({ children }) => {
-    const url = "http://localhost:8080";
+    const url = "https://frauddetection-uywd.onrender.com";
     const [user, setUser] = useState(null);
     const [accounts, setAccounts] = useState([]);
     const [cardRequests, setCardRequests] = useState([]);
@@ -29,11 +29,6 @@ const UserContext = ({ children }) => {
     }, []);
 
 
-    // useEffect(() => {   
-    //     console.log("Updated user:", user);
-    //     console.log("Updated accounts:", accounts);
-    //     console.log("Updated cardRequests:", cardRequests);
-    // })
     return (
         <UserDataContext.Provider value={{ user, accounts, cardRequests, loading }}>
             {children}

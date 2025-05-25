@@ -23,6 +23,7 @@ export default function RequestCreditCard() {
   const [cardPurpose, setCardPurpose] = useState("");
   const [termsAgreed, setTermsAgreed] = useState(false);
   const [errors, setErrors] = useState({});
+  const {url}=useContext(UserDataContext)
   
   const [cardPreview, setCardPreview] = useState({
     cardNumber: "5340 0491 1190 2214",
@@ -51,7 +52,7 @@ export default function RequestCreditCard() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:8080/users/request-card",
+        `${url}/users/request-card`,
         {
           cardType,
           cardCategory,

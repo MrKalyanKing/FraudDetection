@@ -17,7 +17,7 @@ export default function TransferMoney() {
   const [pendingDeposits, setPendingDeposits] = useState([]);
   const navigate = useNavigate();
 
-  const { user, accounts } = useContext(UserDataContext);
+  const { user, accounts ,url} = useContext(UserDataContext);
 
 
 
@@ -34,7 +34,7 @@ export default function TransferMoney() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:8080/users/deposit",
+        `${url}/users/deposit`,
         {
           accountId: account._id,
           amount: transferAmount,

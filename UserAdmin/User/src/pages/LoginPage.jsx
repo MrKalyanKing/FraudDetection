@@ -31,7 +31,7 @@ export default function LoginPage() {
       e.preventDefault();
  
     try {
-      const res = await axios.post(`http://localhost:8080/users/login`, form);
+      const res = await axios.post(`https://frauddetection-uywd.onrender.com/users/login`, form);
       
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful!");

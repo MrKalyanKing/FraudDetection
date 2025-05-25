@@ -277,7 +277,7 @@ export default function AccountAuthorization() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedIds, setSelectedIds] = useState([]);
   const { depositRequests, loading } = useContext(AdminDataContext);
-
+  const{url}=useContext(AdminDataContext)
   // Memoize filtered requests for performance
   const filteredRequests = useMemo(() => {
     if (!depositRequests) return [];
@@ -317,7 +317,7 @@ export default function AccountAuthorization() {
     try {
       const token = localStorage.getItem("adminToken");
       await axios.put(
-        `http://localhost:8080/admin/approve-deposit/${depositId}`,
+        `${url}/admin/approve-deposit/${depositId}`,
         {status:"approved"},
         { headers: { Authorization: `Bearer ${token}` } }
       );

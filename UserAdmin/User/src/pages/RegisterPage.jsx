@@ -22,7 +22,7 @@ const initialState = {
 const genders = ["M", "F", "Other"];
 
 export default function RegistrationForm() {
-  const url=useContext(UserDataContext)
+  const { url}=useContext(UserDataContext)
   const [form, setForm] = useState(initialState);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ export default function RegistrationForm() {
     setMessage("");
     setLoading(true);
     try {
-      const res = await axios.post(`http://localhost:8080/users/register`, form);
+      const res = await axios.post(`${url}/users/register`, form);
       setMessage(res.data.message || "Registration successful!");
       setForm(initialState);
     } catch (err) {

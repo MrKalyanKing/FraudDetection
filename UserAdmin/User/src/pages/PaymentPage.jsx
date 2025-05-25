@@ -5,7 +5,8 @@ import { UserDataContext } from '../components/Context/UserContext'; // Updated 
 import { Link } from 'react-router-dom';
 import { CreditCard, Lock, ArrowLeft, Check, AlertCircle } from 'lucide-react';
 import axios from 'axios';
-import { products } from '../lib/data'; // Import products from data.js
+import { products } from '../lib/data';
+ 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function PaymentPage() {
@@ -16,6 +17,7 @@ export default function PaymentPage() {
   const [error, setError] = useState(null);
   const [isFraudulent, setIsFraudulent] = useState(false);
   const[billsummmary, setBillSummary] = useState([]);
+  const {url}=useContext(UserDataContext)
   const [formData, setFormData] = useState({
     cardNumber: '',
     cvv: '',
@@ -146,7 +148,7 @@ if (!loading && user && cartItems.length > 0 && formData.cardNumber) {
   
         console.log('Transaction Data:', transactionData);
    
-     const response = await axios.post('http://localhost:8080/users/buy', transactionData, {
+     const response = await axios.post(`${url}/users/buy`, transactionData, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     });
 

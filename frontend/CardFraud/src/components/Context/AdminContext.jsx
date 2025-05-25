@@ -4,7 +4,7 @@ import axios from "axios";
 export const AdminDataContext = createContext();
 
 const AdminContext = ({ children }) => {
-  const url = "http://localhost:8080";
+  const url = "https://frauddetection-uywd.onrender.com";
   const [admin, setAdmin] = useState([]);
   const [userRequests, setUserRequests] = useState([]);
   const [cardRequests, setCardRequests] = useState([]);

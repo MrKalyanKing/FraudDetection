@@ -359,6 +359,7 @@ export default function CardManagementPage() {
   const [modalRequestId, setModalRequestId] = useState(null);
   const [modalCardLimit, setModalCardLimit] = useState('');
   const [modalExpiry, setModalExpiry] = useState('');
+  const{url}=useContext(AdminDataContext)
 
   // Open modal for approval
   const openApproveModal = (id) => {
@@ -373,7 +374,7 @@ export default function CardManagementPage() {
     try {
       const token = localStorage.getItem("adminToken");
       await axios.put(
-        `http://localhost:8080/admin/approve-card/${modalRequestId}`,
+        `${url}/admin/approve-card/${modalRequestId}`,
         {
           status: "approved",
           cardLimit: modalCardLimit,
@@ -397,7 +398,7 @@ export default function CardManagementPage() {
     try {
       const token = localStorage.getItem("adminToken");
       await axios.put(
-        `http://localhost:8080/admin/approve-card/${requestId}`,
+        `${url}/admin/approve-card/${requestId}`,
         { status: "declined" },
         { headers: { Authorization: `Bearer ${token}` } }
       );

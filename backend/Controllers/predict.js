@@ -10,8 +10,17 @@ const dotenv = require('dotenv');
 const TransactionDetails = require("../models/TransactionDetails");
 
 dotenv.config();
-process.env.GOOGLE_APPLICATION_CREDENTIALS= path.join(__dirname, "../secret/frauddetectionss.json"); // Ensure this path is correct
+// process.env.GOOGLE_APPLICATION_CREDENTIALS= path.join(__dirname, "../secret/frauddetectionss.json"); // Ensure this path is correct
+const base64Secret = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
+let secretJson = {};
+if (base64Secret) {
+  try {
+    secretJson = JSON.parse(Buffer.from(base64Secret, 'base64').toString('utf8'));
+  } catch (e) {
+    console.error('Failed to parse secret JSON:', e);
+  }
+}
 
 async function getAccessToken() {
     try {

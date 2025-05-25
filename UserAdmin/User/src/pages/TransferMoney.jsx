@@ -22,7 +22,7 @@ export default function TransferMoney() {
 
 
   const handleTransfer = async (req,res) => {
-    if (!account) {
+    if (!accounts) {
       toast.error("You must have a bank account to request a deposit.");
       return;
     }
@@ -36,7 +36,7 @@ export default function TransferMoney() {
       await axios.post(
         `${url}/users/deposit`,
         {
-          accountId: account._id,
+          accountId: accounts._id,
           amount: transferAmount,
         },
         {
@@ -46,7 +46,7 @@ export default function TransferMoney() {
      toast.success("Your deposit request is pending admin approval.");
       setTransferAmount("0");
       // Refresh pending deposits
-      const res = await axios.get("http://localhost:8080/users/deposits", {
+      const res = await axios.get(`${url}/users/deposits`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPendingDeposits(res.data.deposits || []);
@@ -87,9 +87,9 @@ export default function TransferMoney() {
               </thead>
               <tbody>
                 <tr className="hover:bg-neutral-50">
-                  <td className="py-3 px-4 border-b">{account ? account.accountNumber : "N/A"}</td>
+                  <td className="py-3 px-4 border-b">{accounts ? accounts[0].accountNumber : "N/A"}</td>
                   <td className="py-3 px-4 border-b">{user?.first || "raj"}</td>
-                  <td className="py-3 px-4 border-b">{account ? account.bankName : "N/A"}</td>
+                  <td className="py-3 px-4 border-b">{accounts ? accounts[0].bankName : "N/A"}</td>
                   <td className="py-3 px-4 border-b">
                     <input
                       type="number"

@@ -21,7 +21,7 @@ import { AdminDataContext } from '@/components/Context/AdminContext';
 export default function UserAuthorizationPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedIds, setSelectedIds] = useState([]);
-  const { userRequests = [] } = useContext(AdminDataContext);
+  const { userRequests = [] ,url} = useContext(AdminDataContext);
 
   // Filter users based on search term
   const filteredUsers = userRequests.filter(user => 
@@ -46,6 +46,30 @@ export default function UserAuthorizationPage() {
       setSelectedIds(filteredUsers.map(user => user._id));
     }
   };
+
+
+const handleApproveUser = async (userId) => {
+    const token = localStorage.getItem('adminToken');
+    try {
+      const res = await axios.put(
+        `${url}/admin/approve-account/${userId}`,
+        { status: "approved" },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success(res.data.message || "User approved!");
+      setUserRequests(prev => prev.filter(user => user._id !== userId));
+    } catch (err) {
+      toast.error(
+        err.response?.data?.message || "Approval failed. Please try again."
+      );
+    }
+  };
+
+
 
   return (
     <AppLayout title="User Authorization">
@@ -146,7 +170,8 @@ export default function UserAuthorizationPage() {
                           <Button variant="outline" size="sm" className="mr-2">
                             Review
                           </Button>
-                          <Button variant="outline" size="sm" className="bg-green-50 text-green-700 hover:bg-green-100">
+                          <Button   variant="outline" size="sm" className="bg-green-50 cursor-pointer text-green-700 hover:bg-green-100"
+                          onClick={() => handleApproveUser(user._id)}>
                             Approve
                           </Button>
                         </TableCell>

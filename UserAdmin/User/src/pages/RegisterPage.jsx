@@ -2,6 +2,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { UserDataContext } from "../components/Context/UserContext";
+import { Link } from "react-router-dom";
 
 const initialState = {
   first: "",
@@ -26,6 +27,7 @@ export default function RegistrationForm() {
   const [form, setForm] = useState(initialState);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+ 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -203,13 +205,13 @@ export default function RegistrationForm() {
               >
                 {loading ? "Registering..." : "Create Account"}
               </button>
-              <button
-                className="w-full py-3 px-4 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200 disabled:bg-indigo-400 disabled:cursor-not-allowed"
+           <Link to="/login">  <button
+                className="w-full mt-3 py-3 px-4 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200 disabled:bg-indigo-400 disabled:cursor-not-allowed"
                 type="submit"
                 disabled={loading}
               >
                 Login
-              </button>
+              </button></Link>
               {message && (
                 <div className="text-center text-sm font-medium text-green-600">
                   {message}

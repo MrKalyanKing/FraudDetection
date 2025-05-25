@@ -5,6 +5,8 @@ export const products = [
   {
     id: 1,
     name: "Latest Smartphone",
+        image:"https://media.istockphoto.com/id/1304021183/photo/on-off-and-bluetooth-buttons-on-the-portable-boom-box-close-up.webp?a=1&b=1&s=612x612&w=0&k=20&c=HQgVapq_G9Ig-qFYiZl8xzaAc_4_HiHdoUjFm_pm3HU=",
+
     description: "High performance smartphone with advanced camera",
     price: 799.99,
     rating: 5,
@@ -15,6 +17,7 @@ export const products = [
   {
     id: 2,
     name: "Premium Laptop",
+    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
     description: "High-performance laptop with 16GB RAM and 512GB SSD",
     price: 1299.99,
     rating: 5,
@@ -25,6 +28,8 @@ export const products = [
   {
     id: 3,
     name: "Wireless Headphones",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+
     description: "Premium noise-cancelling wireless headphones",
     price: 299.99,
     rating: 4,
@@ -35,6 +40,8 @@ export const products = [
   {
     id: 4,
     name: "Smartwatch",
+    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+
     description: "Advanced health monitoring and fitness tracking",
     price: 249.99,
     rating: 4,
@@ -45,6 +52,8 @@ export const products = [
   {
     id: 5,
     name: "Gaming Console",
+        image:"https://images.unsplash.com/photo-1580234797602-22c37b2a6230?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FtaW5nJTIwY29uc29sZXxlbnwwfHwwfHx8MA%3D%3D",
+
     description: "Next-generation gaming with realistic graphics",
     price: 499.99,
     rating: 5,
@@ -57,6 +66,7 @@ export const products = [
     name: "Professional Camera",
     description: "High-resolution DSLR camera with multiple lenses",
     price: 1899.99,
+    image:"https://media.istockphoto.com/id/1304021183/photo/on-off-and-bluetooth-buttons-on-the-portable-boom-box-close-up.webp?a=1&b=1&s=612x612&w=0&k=20&c=HQgVapq_G9Ig-qFYiZl8xzaAc_4_HiHdoUjFm_pm3HU=",
     rating: 5,
     category: "electronics",
     merchant: "PhotoPro Shop",
@@ -66,6 +76,7 @@ export const products = [
     id: 7,
     name: "Designer T-Shirt",
     description: "Premium cotton t-shirt with modern design",
+    image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fHww",
     price: 39.99,
     rating: 4,
     category: "clothing",
@@ -75,6 +86,7 @@ export const products = [
   {
     id: 8,
     name: "Programming Book",
+    image:"https://images.unsplash.com/photo-1580121441575-41bcb5c6b47c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZ3JhbW1pbmclMjBib29rfGVufDB8fDB8fHww",
     description: "Complete guide to modern web development",
     price: 49.99,
     rating: 5,
@@ -85,6 +97,7 @@ export const products = [
   {
     id: 9,
     name: "Coffee Maker",
+    image:"https://images.unsplash.com/photo-1573067867666-a8af7fd39cd9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29mZWUlMjBtYWtlcnxlbnwwfHwwfHx8MA%3D%3D",
     description: "Automatic coffee maker with built-in grinder",
     price: 199.99,
     rating: 4,
@@ -94,7 +107,8 @@ export const products = [
   },
   {
     id: 10,
-    name: "Bluetooth Speaker",
+    name: "Projector",
+    image:"https://images.unsplash.com/photo-1637656367774-d5e65ace6290?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2plY3RvcnxlbnwwfHwwfHx8MA%3D%3D",
     description: "Portable speaker with rich sound and long battery life",
     price: 79.99,
     rating: 4,
@@ -102,8 +116,19 @@ export const products = [
     merchant: "SoundWave Store",
     merch_zipcode: "90210",
   },
+   {
+    id: 11,
+    name: "grocery_item",
+    image:"https://plus.unsplash.com/premium_photo-1664391960037-8aefeab6482b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z3JvY2VyeXxlbnwwfHwwfHx8MA%3D%3D",
+    description: "Portable speaker with rich sound and long battery life",
+    price:276.31,
+    rating: 4,
+    category: "grocery_pos",
+    merchant: "fraud_Goodwin-Nitzsche",
+    merch_zipcode: " 78039.0 ",
+  },
 ];
-
+// 
 // Purchase data
 export const purchases = [
   {

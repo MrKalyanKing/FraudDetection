@@ -28,9 +28,11 @@ const UserContext = ({ children }) => {
         .catch(() => setLoading(false));
     }, []);
 
-
+    useEffect(() => {   
+            console.log("user accounts:", accounts);
+    })
     return (
-        <UserDataContext.Provider value={{ user, accounts, cardRequests, loading }}>
+        <UserDataContext.Provider value={{ url,user, accounts, cardRequests, loading }}>
             {children}
         </UserDataContext.Provider>
     );

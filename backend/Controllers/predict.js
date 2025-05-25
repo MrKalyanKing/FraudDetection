@@ -35,7 +35,7 @@ async function getAccessToken() {
     }
 }
 
-const dummy_data = false;
+const dummy_data = true;
  
 const prediction = async (req, res) => {
     try {
@@ -106,7 +106,7 @@ const prediction = async (req, res) => {
             is_fraud,
             confidence,
             stored_id: saved._id,
-            message: dummy_data ? "Dummy data used for testing (no GCP charges)." : "Predicted and stored."
+            message: dummy_data ? "Dummy data used for testing ( GCP credits are over)." : "Predicted and stored."
         });
 
        

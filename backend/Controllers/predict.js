@@ -12,7 +12,7 @@ const TransactionDetails = require("../models/TransactionDetails");
 dotenv.config();
 // process.env.GOOGLE_APPLICATION_CREDENTIALS= path.join(__dirname, "../secret/frauddetectionss.json"); // Ensure this path is correct
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS="/frauddetections.json"
+process.env.GOOGLE_APPLICATION_CREDENTIALS="/frauddetectionss.json"
 async function getAccessToken() {
     try {
         const auth = new GoogleAuth({

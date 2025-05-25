@@ -110,23 +110,45 @@ router.post('/users/register', async (req, res) => {
 // 2. User Login
 router.post('/users/login', async (req, res) => {
   try {
-    const { email, password,bankName} = req.body;
-   const user = await User.findOne({ email }).select('+password');;
-    if (!user||!bankName) return res.status(400).json({ message: 'Invalid credentials' });
+    const { email, password, bankName } = req.body;
+    if (!email || !password || !bankName) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const user = await User.findOne({ email, bankName }).select('+password');
+    if (!user || !user.password) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-    if (user.status !== 'approved') return res.status(403).json({ message: 'Account not approved yet' });
+    if (user.status !== 'approved') {
+      return res.status(403).json({ message: 'Account not approved yet' });
+    }
 
-    const token = jwt.sign({ id: user._id, isAdmin: false }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token, user: { id: user._id, email: user.email, first: user.first, last: user.last } });
+    const token = jwt.sign(
+      { id: user._id, isAdmin: false },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+    res.json({
+      token,
+      user: {
+        id: user._id,
+        email: user.email,
+        first: user.first,
+        last: user.last,
+        bankName: user.bankName
+      }
+    });
   } catch (error) {
-    console.log("server err",error)
+    console.log("server err", error);
     res.status(500).json({ message: 'Server error', error });
   }
 });
-
 // 3. Request Credit/Debit Card
 router.post('/users/request-card', auth, async (req, res) => {
   try {

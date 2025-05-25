@@ -10,12 +10,8 @@ const dotenv = require('dotenv');
 const TransactionDetails = require("../models/TransactionDetails");
 
 dotenv.config();
+process.env.GOOGLE_APPLICATION_CREDENTIALS= path.join(__dirname, "../secret/frauddetections.json"); // Ensure this path is correct
 
-
-//process.env.GOOGLE_APPLICATION_CREDENTIALS = "../secret/frauddetection.json"; // Ensure this path is correct
-
-// console.log("GOOGLE_APPLICATION_CREDENTIALS:", process.env.GOOGLE_APPLICATION_CREDENTIALS);
-process.env.GOOGLE_APPLICATION_CREDENTIALS= path.join(__dirname, "../secret/frauddetection.json"); // Ensure this path is correct
 
 async function getAccessToken() {
     try {
@@ -34,7 +30,7 @@ async function getAccessToken() {
         console.log("✅ Access Token obtained.");
         return token;
     } catch (error) {
-        console.error("❌ Error obtaining access token:", error.message);
+        console.error("❌ Error obtaining access token:", error);
         return null;
     }
 }

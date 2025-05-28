@@ -398,7 +398,7 @@ router.post('/admin/register', async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
-    const existingAdmin = await Admin.findOne({ email, bankName });
+    const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
       return res.status(400).json({ message: 'Admin already exists for this bank' });
     }

@@ -55,9 +55,7 @@ export default function RegistrationPage() {
     setLoading(false);
   };
 
-  useEffect(()=>{
-    console.log(form)
-  })
+ 
 
   return (
     <div style={styles.container}>

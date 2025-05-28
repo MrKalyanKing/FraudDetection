@@ -401,10 +401,10 @@ router.post('/admin/register', async (req, res) => {
     const existingAdmin = await Admin.findOne({ email });
     const existingBankAdmin = await Admin.findOne({ bankName });
     if (existingAdmin) {
-      return res.status(400).json({ message: 'Admin already exists for this bank contact admin' });
+      return res.status(400).json({ message: 'Admin already exists for this bank ' });
     }
     if(bankName && existingBankAdmin) {
-      return res.status(400).json({ message: 'Bank already has an admin' });
+      return res.status(400).json({ message: 'Bank already exists  please contact admin ' });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 

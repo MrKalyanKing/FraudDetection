@@ -1,6 +1,8 @@
 
 
 import { useState, useContext } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import AppLayout from '@/components/layout/AppLayout';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/Dashboard/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Dashboard/ui/tabs";
@@ -21,7 +23,7 @@ import { AdminDataContext } from '@/components/Context/AdminContext';
 export default function UserAuthorizationPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedIds, setSelectedIds] = useState([]);
-  const { userRequests = [] ,url} = useContext(AdminDataContext);
+  const { url, userRequests, setUserRequests } = useContext(AdminDataContext);
 
   // Filter users based on search term
   const filteredUsers = userRequests.filter(user => 
@@ -47,8 +49,8 @@ export default function UserAuthorizationPage() {
     }
   };
 
-
-const handleApproveUser = async (userId) => {
+  // Approve a single user
+ const handleApproveUser = async (userId) => {
     const token = localStorage.getItem('adminToken');
     try {
       const res = await axios.put(
@@ -68,8 +70,55 @@ const handleApproveUser = async (userId) => {
       );
     }
   };
+  // Approve selected users
+  const handleApproveSelected = async () => {
+    const token = localStorage.getItem('adminToken');
+    try {
+      await Promise.all(selectedIds.map(userId =>
+        axios.put(
+          `${url}/admin/approve-account/${userId}`,
+          { status: "approved" },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+      ));
+      toast.success("Selected users approved!");
+      setSelectedIds([]);
+      if (typeof fetchUserRequests === "function") fetchUserRequests();
+    } catch (err) {
+      toast.error(
+        err.response?.data?.message || "Approval failed. Please try again."
+      );
+    }
+  };
 
-
+  // Reject selected users (optional)
+  const handleRejectSelected = async () => {
+    const token = localStorage.getItem('adminToken');
+    try {
+      await Promise.all(selectedIds.map(userId =>
+        axios.put(
+          `${url}/admin/approve-account/${userId}`,
+          { status: "rejected" },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+      ));
+      toast.success("Selected users rejected!");
+      setSelectedIds([]);
+      if (typeof fetchUserRequests === "function") fetchUserRequests();
+    } catch (err) {
+      toast.error(
+        err.response?.data?.message || "Rejection failed. Please try again."
+      );
+    }
+  };
 
   return (
     <AppLayout title="User Authorization">
@@ -98,6 +147,7 @@ const handleApproveUser = async (userId) => {
                     variant="default" 
                     disabled={selectedIds.length === 0}
                     className="whitespace-nowrap"
+                    onClick={handleApproveSelected}
                   >
                     Approve Selected
                   </Button>
@@ -105,6 +155,7 @@ const handleApproveUser = async (userId) => {
                     variant="outline" 
                     disabled={selectedIds.length === 0}
                     className="whitespace-nowrap"
+                    onClick={handleRejectSelected}
                   >
                     Reject Selected
                   </Button>
@@ -170,8 +221,12 @@ const handleApproveUser = async (userId) => {
                           <Button variant="outline" size="sm" className="mr-2">
                             Review
                           </Button>
-                          <Button   variant="outline" size="sm" className="bg-green-50 cursor-pointer text-green-700 hover:bg-green-100"
-                          onClick={() => handleApproveUser(user._id)}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="bg-green-50 cursor-pointer text-green-700 hover:bg-green-100"
+                            onClick={() => handleApproveUser(user._id)}
+                          >
                             Approve
                           </Button>
                         </TableCell>

@@ -29,7 +29,7 @@ export default function Sidebar() {
   const handleNavClick = (path, id) => {
     if (id === "logout") {
       localStorage.removeItem("token");
-      navigate("/login");
+      navigate("/");
       toast.success("Logged out successfully");
       return
     }

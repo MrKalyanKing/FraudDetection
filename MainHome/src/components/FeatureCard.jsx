@@ -11,6 +11,7 @@ const FeatureCard = ({
   linkColor,
   linkHref = "#"
 }) => {
+  
   return (
     <div className={`bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border-t-4 ${color}`}>
       <div className="p-6">

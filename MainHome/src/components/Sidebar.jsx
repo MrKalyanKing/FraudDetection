@@ -35,7 +35,7 @@ const Sidebar = () => {
           <ul className="space-y-2">
             {navigationLinks.map((link, index) => (
               <li key={index}>
-                <Link href={link.href}>
+                <Link to={link.href}>
                   <a className={`block px-4 py-2 text-[#1e293b] hover:bg-[#3b82f6]/10 rounded-lg transition ${
                     (link.name === "Bank Admin" || link.name === "User" || link.name === "Contact Us") ? "font-medium" : ""
                   }`}>

@@ -16,7 +16,7 @@ const AppLayout = ({ children, title }) => {
   // Logout handler
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
-    navigate("/login");
+    navigate("/");
     toast.success("Logged out successfully");
   };
 

@@ -100,7 +100,7 @@ export default function RegistrationPage() {
           {loading ? "Registering..." : "Register"}
         </button>
         <button style={styles.button} type="submit" disabled={loading}>
-          <Link to="/login">{loading ? "Logging..." : "Login"}</Link>
+          <Link to="/">{loading ? "Logging..." : "Login"}</Link>
         </button>
       </form>
       <ToastContainer />

@@ -24,7 +24,7 @@ function App() {
     <Routes>
       {/* Public routes */}
      
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<LoginPage />} />
       <Route path="/register" element={<RegistrationForm />} />
 
       {/* Protected routes */}
@@ -47,7 +47,7 @@ function App() {
       <Route path="/purchased-products" element={<PurchasedProducts />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/payment" element={<PaymentPage />} />
-      <Route path="*" element={<NotFound />} />
+     
     </Routes>
     
   );

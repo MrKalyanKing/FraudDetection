@@ -31,7 +31,7 @@ export default function LoginPage() {
       e.preventDefault();
  
     try {
-      const res = await axios.post(`https://frauddetection-uywd.onrender.com/users/login`, form);
+      const res = await axios.post(`https://frauddetection-9j46.onrender.com/users/login`, form);
       
       localStorage.setItem("token", res.data.token);
       toast.success("Login successful!");
@@ -87,7 +87,7 @@ export default function LoginPage() {
 
             <div className="mb-4">
               <label className="block text-neutral-700 mb-2" htmlFor="username">
-                User Name (required)
+                Enter Email (required)
               </label>
               <input
                 id="email"
@@ -126,7 +126,7 @@ export default function LoginPage() {
               </button>
               <div className="text-sm cursor-pointer">
                 <span className="text-neutral-600">New User?</span>
-                <a href="/register">
+                <Link to="/register">
                   {" "}
                   <button
                     type="button"
@@ -135,7 +135,7 @@ export default function LoginPage() {
                   >
                     Register
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </form>

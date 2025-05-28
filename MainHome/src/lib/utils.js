@@ -1,16 +1,16 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+// import { link } from "../../../backend/routes/route";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
 export const navigationLinks = [
-  { name: "Home", href: "/", icon: "home" },
-  { name: "Bank Admin", href: "#", icon: "landmark" },
-  { name: "Ecommerce", href: "#", icon: "shopping-cart" },
-  { name: "User", href: "#", icon: "user" },
-  { name: "Contact Us", href: "/contact", icon: "envelope" }
+  { name: "Home", href: "/", icon: "home", external: false },
+  { name: "Bank Admin", href: "https://bankadmin.netlify.app", icon: "landmark", external: true },
+  { name: "User", href: "https://userssites.netlify.app", icon: "user", external: true },
+  { name: "Contact Us", href: "/contact", icon: "envelope", external: false }
 ];
 
 export const sliderData = [
@@ -46,7 +46,9 @@ export const featureCards = [
     bgColor: "bg-[#3b82f6]/10",
     iconColor: "text-[#3b82f6]",
     linkText: "Access Portal",
-    linkColor: "text-[#3b82f6] hover:text-[#3b82f6]/80"
+    linkColor: "text-[#3b82f6] hover:text-[#3b82f6]/80",
+    linkHref: "https://userssites.netlify.app",
+    external: true
   },
   {
     title: "Admin Console",
@@ -56,7 +58,9 @@ export const featureCards = [
     bgColor: "bg-[#f97316]/10",
     iconColor: "text-[#f97316]",
     linkText: "Admin Login",
-    linkColor: "text-[#f97316] hover:text-[#f97316]/80"
+    linkColor: "text-[#f97316] hover:text-[#f97316]/80",
+    linkHref: "https://bankadmin.netlify.app",
+    external: true
   },
   {
     title: "Contact Support",

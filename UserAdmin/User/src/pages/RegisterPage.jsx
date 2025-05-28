@@ -205,7 +205,7 @@ export default function RegistrationForm() {
               >
                 {loading ? "Registering..." : "Create Account"}
               </button>
-           <Link to="/login">  <button
+           <Link to="/">  <button
                 className="w-full mt-3 py-3 px-4 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200 disabled:bg-indigo-400 disabled:cursor-not-allowed"
                 type="submit"
                 disabled={loading}

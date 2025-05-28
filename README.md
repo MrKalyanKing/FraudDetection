@@ -272,6 +272,6 @@ cd Credit_fraud_detection
 
 ---
 
-**For any questions, please refer to the code comments or contact the project maintainers.**
+**For any questions, please refer to the code comments or contact the project maintainers(developer).**
 
 ---
